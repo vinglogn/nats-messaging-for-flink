@@ -17,6 +17,8 @@ USAGE:
 FUTURE:
 * ~~~Add a NatsSink class, to send messages to a NATS topic from Flink jobs~~~
 * Add support for non-String message types
+* Add support for configure group-id (just like kafka)
+* Add support for configure the setParallelism for the SourceFunction
 
 LICENSE:
 Apache 2.0 licensed.
