@@ -33,7 +33,7 @@ import org.slf4j.LoggerFactory;
  * 
  * @author Matthew Ring
  */
-public class NatsSource implements SourceFunction<String> {
+public class NatsSource implements RichParallelSourceFunction<String> {
 
     private static final long serialVersionUID = 3L;
 
