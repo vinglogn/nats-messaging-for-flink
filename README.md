@@ -15,7 +15,6 @@ USAGE:
 * Give an instance of NatsSource to your Flink StreamExecutionEnvironment, then Map and Filter the resulting DataStreamSource<String> to your heart's content!
 
 FUTURE:
-* ~~~Add a NatsSink class, to send messages to a NATS topic from Flink jobs~~~
 * Add support for non-String message types
 * Add support for configure group-id (just like kafka)
 * Add support for configure the setParallelism for the SourceFunction
