@@ -35,7 +35,7 @@ public class NatsConfig implements Serializable {
     private final int maxConnectRetries;
     private final int reconnectWaitMillis;
 
-    public NatsConfig(String brokerUris, String topic, int maxConnectRetries, int reconnectWaitMillis) {
+    public NatsConfig(String brokerUris, String topic, String groupId, int maxConnectRetries, int reconnectWaitMillis) {
         checkArgument(
                 !Strings.isNullOrEmpty(brokerUris),
                 "brokerUris must be populated");
@@ -47,6 +47,7 @@ public class NatsConfig implements Serializable {
                 "reconnectWaitMillis must be zero or positive");
         this.brokerUris = brokerUris;
         this.topic = topic;
+        this.groupId = groupId;
         this.maxConnectRetries = maxConnectRetries;
         this.reconnectWaitMillis = reconnectWaitMillis;
     }
@@ -59,6 +60,10 @@ public class NatsConfig implements Serializable {
         return topic;
     }
 
+    public String getGroupId() {
+        return groupId; 
+    }
+    
     public int getMaxConnectRetries() {
         return maxConnectRetries;
     }
@@ -70,6 +75,7 @@ public class NatsConfig implements Serializable {
     public Properties getAsJava_NatsProperties() {
         final Properties natsProps = new Properties();
         natsProps.put("uri", this.getBrokerUris());
+        natsProps.put("queue", this.getGroupId());
         natsProps.put("max_reconnect_attempts", this.getMaxConnectRetries());
         natsProps.put("reconnect_time_wait", this.getReconnectWaitMillis());
         return natsProps;
